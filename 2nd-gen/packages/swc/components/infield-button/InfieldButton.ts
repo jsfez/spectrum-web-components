@@ -32,6 +32,25 @@ import styles from './infield-button.css';
  *
  * @slot icon - Icon to display inside the button.
  *
+ * @cssprop --swc-infield-button-height - Block and inline size of the button (always square).
+ *   Defaults to the medium component height token. The parent field sets this to match the
+ *   field size.
+ * @cssprop --swc-infield-button-icon-size - Size of the slotted icon element.
+ *   Defaults to the medium workflow icon size token.
+ * @cssprop --swc-infield-button-border-radius - Default corner radius applied to all four
+ *   corners. Defaults to `token("corner-radius-100")`. Override individual corners with the
+ *   `--swc-infield-button-border-{start-start,start-end,end-start,end-end}-radius` properties.
+ * @cssprop --swc-infield-button-border-start-start-radius - Start-start corner radius.
+ *   Parent fields zero this out for side-aligned buttons.
+ * @cssprop --swc-infield-button-border-start-end-radius - Start-end corner radius.
+ *   Parent fields zero this out for side-aligned buttons.
+ * @cssprop --swc-infield-button-border-end-start-radius - End-start corner radius.
+ *   Parent fields zero this out for side-aligned buttons.
+ * @cssprop --swc-infield-button-border-end-end-radius - End-end corner radius.
+ *   Parent fields zero this out for side-aligned buttons.
+ * @cssprop --swc-infield-button-border-color - Border color. Defaults to `token("gray-300")`.
+ *   The parent field sets this to match the field chrome border color.
+ *
  * @example
  * <swc-infield-button accessible-label="Increment value" size="m">
  *   <sp-icon-chevron100 slot="icon"></sp-icon-chevron100>
