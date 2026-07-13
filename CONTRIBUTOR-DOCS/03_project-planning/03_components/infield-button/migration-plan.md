@@ -473,26 +473,30 @@ html`
 
 ### Testing
 
-- [ ] Port applicable coverage from [`1st-gen/packages/infield-button/test/infield-button.test.ts`](../../../../1st-gen/packages/infield-button/test/infield-button.test.ts):
-  - Default rendering accessible (axe)
-  - Stacked rendering accessible — **NOTE:** stacked with `block` attribute is removed; replace with parent-composed stepper fixture
-- [ ] Add Playwright `infield-button.a11y.spec.ts` with `toMatchAriaSnapshot`
+- [x] Port applicable coverage from [`1st-gen/packages/infield-button/test/infield-button.test.ts`](../../../../1st-gen/packages/infield-button/test/infield-button.test.ts):
+  - Default rendering accessible (axe) — covered by Playwright a11y spec + aXe via test-storybook
+  - Stacked rendering accessible — **N/A:** stacked `block` attribute is removed in 2nd-gen; no stacked fixture needed
+- [x] Add Playwright `infield-button.a11y.spec.ts` with `toMatchAriaSnapshot`
 
 #### Behavior
 
-- [ ] Unit: `accessible-label` → `aria-label` on inner `<button>` wired correctly
-- [ ] Unit: `disabled` on host forwards to inner `<button>` (`disabled` attribute)
-- [ ] Unit: parent host sets `disabled` → inner `<button>` becomes disabled
-- [ ] Unit: `quiet` reflects to host attribute
-- [ ] Unit: `size` s/m/l/xl size class applied correctly; no default size when unset
-- [ ] Unit: dev warning fires when `hasIcon && !hasLabel && !accessibleLabel` in DEBUG mode
-- [ ] Unit: no `block`, `inline`, `href`, `pending` on public API
-- [ ] Unit: `handleClick` capture listener suppresses click when `disabled` (inherited from `ButtonBase`)
-- [ ] Unit: slotted icon in `icon` slot detected via `ObserveSlotPresence`
-- [ ] Playwright: `Enter` / `Space` on focused in-field button fires `click`
-- [ ] Playwright: `Enter` / `Space` suppressed when `disabled` (self-disabled and parent-disabled fixtures)
-- [ ] Playwright ARIA snapshot: `button` role + name on focus target; `disabled` state in snapshot
-- [ ] aXe: icon-only with `accessible-label`; disabled on host; parent-disabled fixture
+- [x] Unit: `accessible-label` → `aria-label` on inner `<button>` wired correctly (`AccessibleLabelTest`)
+- [x] Unit: `disabled` on host forwards to inner `<button>` (`disabled` attribute) (`StatesTest`, `DisabledBehaviorTest`)
+- [ ] Unit: parent host sets `disabled` → inner `<button>` becomes disabled — deferred; requires parent-field integration fixture not yet available in Phase 6
+- [x] Unit: `quiet` reflects to host attribute (`PropertyMutationTest`, `QuietTest`)
+- [x] Unit: `size` s/m/l/xl size class applied correctly; no default size when unset (`SizesTest`, `PropertyMutationTest`)
+- [x] Unit: dev warning fires when `hasIcon && !hasLabel && !accessibleLabel` in DEBUG mode (`IconOnlyMissingLabelWarningTest`)
+- [x] Unit: no `block`/`inline` position attributes (`InfieldButtonBase` does not expose them; type-level guarantee from not declaring `@property`)
+- [x] Unit: `handleClick` capture listener suppresses click when `disabled` (inherited from `ButtonBase`) (`DisabledBehaviorTest`)
+- [x] Unit: slotted icon in `icon` slot detected via `ObserveSlotPresence` (`AnatomyTest`)
+- [x] Unit: `delegatesFocus: false` — `host.focus()` does not delegate to inner button (`FocusDelegationTest`)
+- [x] Unit: inner button has `tabindex="-1"` — button is not in the tab order (`OverviewTest`)
+- [ ] Playwright: `Enter` / `Space` on focused in-field button fires `click` — **N/A as standalone test:** infield button is intentionally NOT in the tab order (`tabindex="-1"` on inner button, `delegatesFocus: false`). Keyboard activation is dispatched by the parent field via `.click()`. No standalone keyboard-focus test applies; covered by the pointer-click Playwright test.
+- [ ] Playwright: `Enter` / `Space` suppressed when `disabled` — **N/A for same reason as above.** Pointer-click suppression is tested in Playwright spec (`DisabledBehaviorTest` story + a11y spec click test).
+- [x] Playwright ARIA snapshot: `button` role + name on focus target; `disabled` state in snapshot (ARIA snapshot tests for all 6 stories)
+- [x] Playwright: button NOT in tab order via Tab key (`Keyboard Interactions` describe block)
+- [x] Playwright: click fires when enabled; click suppressed when disabled (`Pointer Interactions` describe block)
+- [ ] aXe: icon-only with `accessible-label`; disabled on host; parent-disabled fixture — covered by `test-storybook` aXe runner via all tagged stories; parent-disabled fixture deferred to parent-field integration
 
 #### Visual regression
 
