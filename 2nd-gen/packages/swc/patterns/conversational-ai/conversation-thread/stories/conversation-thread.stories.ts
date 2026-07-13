@@ -630,7 +630,13 @@ class ConversationFullPatternDemo extends LitElement {
           >
             ${this.renderArtifacts()}
             <p slot="legal" class="swc-PromptField-legal-disclaimer">
-              AI output may be inaccurate. Verify before using.
+              Responses are generated using AI, and may be inaccurate. Check
+              before using.
+              <a
+                href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html"
+              >
+                AI User Guidelines
+              </a>
             </p>
           </swc-prompt-field>
           <input
@@ -683,7 +689,13 @@ const fullPatternSource = `<div style="max-width:800px; margin:auto; padding:24p
       <span slot="badge">PDF</span>
     </swc-upload-artifact>
     <p slot="legal" class="swc-PromptField-legal-disclaimer">
-      AI output may be inaccurate. Verify before using.
+      Responses are generated using AI, and may be inaccurate. Check before
+      using.
+      <a
+        href="https://www.adobe.com/legal/licenses-terms/adobe-gen-ai-user-guidelines.html"
+      >
+        AI User Guidelines
+      </a>
     </p>
   </swc-prompt-field>
 </div>`;
