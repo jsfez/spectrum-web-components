@@ -54,17 +54,20 @@
 .swc-InfieldButton:hover {
   color: var(--swc-infield-button-icon-color-hover, token("neutral-content-color-hover"));
   background-color: var(--swc-infield-button-background-color-hover, token("gray-200"));
+  border-color: var(--swc-infield-button-border-color-hover, token("gray-300"));
 }
 
 .swc-InfieldButton:active {
   color: var(--swc-infield-button-icon-color-active, token("neutral-content-color-down"));
   background-color: var(--swc-infield-button-background-color-active, token("gray-200"));
+  border-color: var(--swc-infield-button-border-color-active, token("gray-300"));
 }
 
 /* Parent field owns the focus ring; inner button must not show its own. */
 .swc-InfieldButton:focus-visible {
   color: var(--swc-infield-button-icon-color-focus, token("neutral-content-color-key-focus"));
   background-color: var(--swc-infield-button-background-color-focus, token("gray-200"));
+  border-color: var(--swc-infield-button-border-color-focus, token("gray-300"));
   outline: none;
 }
 
@@ -115,6 +118,7 @@ slot[name="icon"]::slotted(*) {
 :host([quiet]) .swc-InfieldButton:active,
 :host([quiet]) .swc-InfieldButton:focus-visible {
   background-color: transparent;
+  border-color: transparent;
 }
 
 :host([quiet]) .swc-InfieldButton:disabled:is(*, :hover, :active) {

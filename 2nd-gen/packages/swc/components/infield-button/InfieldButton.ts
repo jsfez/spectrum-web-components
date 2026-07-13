@@ -48,8 +48,12 @@ import styles from './infield-button.css';
  *   Parent fields zero this out for side-aligned buttons.
  * @cssprop --swc-infield-button-border-end-end-radius - End-end corner radius.
  *   Parent fields zero this out for side-aligned buttons.
- * @cssprop --swc-infield-button-border-color - Border color. Defaults to `token("gray-300")`.
+ * @cssprop --swc-infield-button-border-color - Border color in the default state. Defaults to `token("gray-300")`.
  *   The parent field sets this to match the field chrome border color.
+ * @cssprop --swc-infield-button-border-color-hover - Border color on hover. Defaults to `token("gray-300")`.
+ * @cssprop --swc-infield-button-border-color-active - Border color when pressed (down state). Defaults to `token("gray-300")`.
+ * @cssprop --swc-infield-button-border-color-focus - Border color when focused. Defaults to `token("gray-300")`.
+ *   The focus ring is owned by the parent field, not the button itself.
  *
  * @example
  * <swc-infield-button accessible-label="Increment value" size="m">
