@@ -54,6 +54,9 @@ import styles from './infield-button.css';
  * @cssprop --swc-infield-button-border-color-active - Border color when pressed (down state). Defaults to `token("gray-300")`.
  * @cssprop --swc-infield-button-border-color-focus - Border color when focused. Defaults to `token("gray-300")`.
  *   The focus ring is owned by the parent field, not the button itself.
+ * @cssprop --swc-infield-button-down-state-transform - Transform applied on press (down state).
+ *   Defaults to a perspective + translate3d that produces the tactile press effect.
+ *   Set to `none` to disable the press animation (e.g. when the button is in a pending state).
  *
  * @example
  * <swc-infield-button accessible-label="Increment value" size="m">

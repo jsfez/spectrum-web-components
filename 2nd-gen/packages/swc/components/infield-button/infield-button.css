@@ -43,10 +43,10 @@
   border-end-start-radius: var(--swc-infield-button-border-end-start-radius, var(--_swc-infield-button-border-radius));
   border-end-end-radius: var(--swc-infield-button-border-end-end-radius, var(--_swc-infield-button-border-radius));
   appearance: none;
-  cursor: pointer;
+  cursor: default;
   transition-timing-function: token("animation-ease-in-out");
   transition-duration: token("animation-duration-100");
-  transition-property: background-color, border-color, color;
+  transition-property: background-color, border-color, color, transform;
 }
 
 /* ── States ───────────────────────────────────────── */
@@ -61,6 +61,8 @@
   color: var(--swc-infield-button-icon-color-active, token("neutral-content-color-down"));
   background-color: var(--swc-infield-button-background-color-active, token("gray-200"));
   border-color: var(--swc-infield-button-border-color-active, token("gray-300"));
+  transform: var(--swc-infield-button-down-state-transform, perspective(var(--_swc-infield-button-size)) translate3d(0, 0, token("component-size-difference-down")));
+  will-change: transform;
 }
 
 /* Parent field owns the focus ring; inner button must not show its own. */
@@ -77,6 +79,7 @@
   background-color: var(--swc-infield-button-background-color-disabled, token("disabled-background-color"));
   border-color: var(--swc-infield-button-border-color-disabled, token("gray-300"));
   cursor: default;
+  transform: none;
 }
 
 /* ── Icon slot ────────────────────────────────────── */
