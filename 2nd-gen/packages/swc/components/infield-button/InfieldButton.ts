@@ -33,8 +33,10 @@ import styles from './infield-button.css';
  * @slot icon - Icon to display inside the button.
  *
  * @cssprop --swc-infield-button-height - Block and inline size of the fill area (always square).
- *   Defaults to the component height minus the edge-to-fill gap on each side, per size.
- *   The consuming field sets this when it needs a non-standard fill size.
+ *   Defaults to the component height minus twice the per-size edge-to-fill gap: S=16px,
+ *   M=20px, L=24px, XL=32px at desktop scale. The consuming field sets this when it needs
+ *   a non-standard fill size. The parent field centers this element within the full
+ *   component height, producing the visible gap between the fill and the field chrome.
  * @cssprop --swc-infield-button-icon-size - Size of the slotted icon element.
  *   Defaults to the medium workflow icon size token.
  * @cssprop --swc-infield-button-border-radius - Default corner radius applied to all four
