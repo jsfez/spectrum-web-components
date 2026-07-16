@@ -42,7 +42,6 @@
 .swc-InfieldButton {
   --_swc-infield-button-border-width: token("border-width-100");
   --_swc-infield-button-border-radius: var(--swc-infield-button-border-radius, token("corner-radius-100"));
-  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-3x-small"));
 
   display: flex;
   align-items: center;
@@ -99,6 +98,8 @@
 /* ── Icon slot ────────────────────────────────────── */
 
 slot[name="icon"]::slotted(*) {
+  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-3x-small"));
+
   flex-shrink: 0;
   inline-size: var(--_swc-infield-button-icon-size);
   block-size: var(--_swc-infield-button-icon-size);
