@@ -87,7 +87,7 @@ export const Playground: Story = {
     'icon-slot': chevronIconSvg,
     size: 'm',
   },
-  tags: ['autodocs', 'dev'],
+  tags: ['dev'],
 };
 
 // ──────────────────────────
