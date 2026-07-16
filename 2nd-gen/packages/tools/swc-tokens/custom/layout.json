@@ -1,0 +1,29 @@
+{
+  "corner-radius-100": {
+    "value": "8px"
+  },
+  "corner-radius-200": {
+    "value": "10px"
+  },
+  "corner-radius-300": {
+    "value": "12px"
+  },
+  "corner-radius-400": {
+    "value": "14px"
+  },
+  "corner-radius-500": {
+    "value": "16px"
+  },
+  "corner-radius-600": {
+    "value": "18px"
+  },
+  "corner-radius-700": {
+    "value": "20px"
+  },
+  "corner-radius-75": {
+    "value": "6px"
+  },
+  "corner-radius-800": {
+    "value": "32px"
+  }
+}
