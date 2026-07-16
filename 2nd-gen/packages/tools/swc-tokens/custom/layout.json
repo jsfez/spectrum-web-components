@@ -1,0 +1,44 @@
+{
+  "spacing-100": {
+    "value": "12px"
+  },
+  "spacing-1000": {
+    "value": "112px"
+  },
+  "spacing-200": {
+    "value": "16px"
+  },
+  "spacing-300": {
+    "value": "20px"
+  },
+  "spacing-350": {
+    "value": "24px"
+  },
+  "spacing-400": {
+    "value": "32px"
+  },
+  "spacing-50": {
+    "value": "4px"
+  },
+  "spacing-500": {
+    "value": "40px"
+  },
+  "spacing-600": {
+    "value": "48px"
+  },
+  "spacing-700": {
+    "value": "64px"
+  },
+  "spacing-75": {
+    "value": "6px"
+  },
+  "spacing-800": {
+    "value": "80px"
+  },
+  "spacing-85": {
+    "value": "8px"
+  },
+  "spacing-900": {
+    "value": "96px"
+  }
+}
