@@ -68,6 +68,10 @@ const CUSTOM_TOKENS = [
     resolveAliases: false,
   },
   {
+    file: 'layout',
+    resolveAliases: true,
+  },
+  {
     file: 'typography',
     resolveAliases: true,
   },
