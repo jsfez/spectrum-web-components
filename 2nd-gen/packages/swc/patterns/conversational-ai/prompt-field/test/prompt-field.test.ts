@@ -14,7 +14,7 @@ import { html, nothing, render } from 'lit';
 import { expect, userEvent } from '@storybook/test';
 import type { Meta, StoryObj as Story } from '@storybook/web-components';
 
-import { getActiveElement } from '@spectrum-web-components/core/utils/index.js';
+import { getActiveElement } from '@adobe/spectrum-wc-core/utils/index.js';
 
 import '../../upload-artifact/index.js';
 import '../index.js';

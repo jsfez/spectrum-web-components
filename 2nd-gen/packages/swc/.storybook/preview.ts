@@ -17,7 +17,7 @@ import {
 } from '@wc-toolkit/storybook-helpers';
 import isChromatic from 'chromatic/isChromatic';
 
-import customElements from './custom-elements.json';
+import customElements from '../dist/custom-elements.json';
 import { withContext } from './decorators/contexts.js';
 import { withFlexLayout, withStaticColorsDemo } from './decorators/index.js';
 import { withLanguageWrapper } from './decorators/language.js';
@@ -336,7 +336,6 @@ const preview = {
               [
                 'Accordion',
                 ['Accessibility migration analysis', 'Migration plan'],
-                'Action bar',
                 'Action button',
                 [
                   'Accessibility migration analysis',
@@ -426,6 +425,8 @@ const preview = {
                 ],
                 'Help text',
                 ['Rendering and styling migration analysis'],
+                'Icon',
+                ['Accessibility migration analysis'],
                 'Illustrated message',
                 [
                   'Accessibility migration analysis',

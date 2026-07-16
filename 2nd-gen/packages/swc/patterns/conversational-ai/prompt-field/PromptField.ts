@@ -32,12 +32,12 @@ import {
   focusgroupNavigationActiveChange,
   type FocusgroupNavigationActiveChangeDetail,
   FocusgroupNavigationController,
-} from '@spectrum-web-components/core/controllers/index.js';
-import { SpectrumElement } from '@spectrum-web-components/core/element/index.js';
+} from '@adobe/spectrum-wc-core/controllers/index.js';
+import { SpectrumElement } from '@adobe/spectrum-wc-core/element/index.js';
 import {
   deepContains,
   getActiveElement,
-} from '@spectrum-web-components/core/utils/index.js';
+} from '@adobe/spectrum-wc-core/utils/index.js';
 
 import '@adobe/spectrum-wc/components/icon/swc-icon.js';
 
