@@ -43,6 +43,14 @@
   --_swc-infield-button-border-width: token("border-width-100");
   --_swc-infield-button-border-radius: var(--swc-infield-button-border-radius, token("corner-radius-100"));
 
+  /* Total block size: 2× padding + icon + 2× border. Used as the perspective
+     distance for the press transform so the effect scales with component size. */
+  --_swc-infield-button-block-size: calc(
+    var(--swc-infield-button-padding, token("accessory-item-padding-medium")) * 2 +
+    var(--swc-infield-button-icon-size, token("workflow-icon-3x-small")) +
+    var(--_swc-infield-button-border-width) * 2
+  );
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,7 +82,7 @@
   color: var(--swc-infield-button-icon-color-active, token("neutral-content-color-down"));
   background-color: var(--swc-infield-button-background-color-active, token("gray-200"));
   border-color: var(--swc-infield-button-border-color-active, token("gray-300"));
-  transform: var(--swc-infield-button-down-state-transform, perspective(100%) translate3d(0, 0, token("component-size-difference-down")));
+  transform: var(--swc-infield-button-down-state-transform, perspective(var(--_swc-infield-button-block-size)) translate3d(0, 0, token("component-size-difference-down")));
   will-change: transform;
 }
 
