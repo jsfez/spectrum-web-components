@@ -12,39 +12,25 @@
 
 /* ── Host (outer container) ───────────────────────── */
 
-/* Mirrors .spectrum-InfieldButton: takes the full component height at this
-   size and applies edge-to-fill padding, creating the visible gap between
-   the outer edge and the colored fill area. No visual styling here — the
-   host is transparent and borderless, identical to the Spectrum CSS outer
-   button element. Medium default: 32px outer, 6px padding → 20px fill. */
+/* No fixed sizing here — the button self-sizes from padding + icon. The
+   consuming field controls the outer dimensions and any additional spacing. */
 
 :host {
-  box-sizing: border-box;
   display: inline-flex;
-  inline-size: var(--swc-infield-button-height, token("component-height-100"));
-  block-size: var(--swc-infield-button-height, token("component-height-100"));
-  padding: token("accessory-gap-medium");
 }
 
 :host([size="s"]) {
-  inline-size: var(--swc-infield-button-height, token("component-height-75"));
-  block-size: var(--swc-infield-button-height, token("component-height-75"));
-
-  /* 4px: deprecated in-field-button-edge-to-fill-small (desktop=4px).
-     accessory-gap-small (5px) is the renamed token but has a different value. */
-  padding: 4px;
+  --swc-infield-button-padding: token("accessory-item-padding-small");
 }
 
 :host([size="l"]) {
-  inline-size: var(--swc-infield-button-height, token("component-height-200"));
-  block-size: var(--swc-infield-button-height, token("component-height-200"));
-  padding: token("accessory-gap-extra-large");
+  --swc-infield-button-padding: token("accessory-item-padding-large");
+  --swc-infield-button-icon-size: token("workflow-icon-2x-small");
 }
 
 :host([size="xl"]) {
-  inline-size: var(--swc-infield-button-height, token("component-height-300"));
-  block-size: var(--swc-infield-button-height, token("component-height-300"));
-  padding: token("accessory-gap-extra-large");
+  --swc-infield-button-padding: token("accessory-item-padding-extra-large");
+  --swc-infield-button-icon-size: token("workflow-icon-extra-small");
 }
 
 * {
@@ -53,21 +39,15 @@
 
 /* ── Fill (button) ────────────────────────────────── */
 
-/* Mirrors .spectrum-InfieldButton-fill: takes 100% of the host content area
-   after the edge-to-fill padding is applied. This element carries all visual
-   styling — background, border, border-radius, and color. */
-
 .swc-InfieldButton {
   --_swc-infield-button-border-width: token("border-width-100");
   --_swc-infield-button-border-radius: var(--swc-infield-button-border-radius, token("corner-radius-100"));
-  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-medium"));
+  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-3x-small"));
 
   display: flex;
   align-items: center;
   justify-content: center;
-  inline-size: 100%;
-  block-size: 100%;
-  padding: 0;
+  padding: var(--swc-infield-button-padding, token("accessory-item-padding-medium"));
   margin: 0;
   color: var(--swc-infield-button-icon-color, token("neutral-content-color-default"));
   background-color: var(--swc-infield-button-background-color, token("gray-100"));
@@ -126,33 +106,12 @@ slot[name="icon"]::slotted(*) {
   fill: currentcolor;
 }
 
-/* ── Per-size icon overrides ──────────────────────── */
-
-:host([size="s"]) .swc-InfieldButton {
-  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-small"));
-}
-
-:host([size="l"]) .swc-InfieldButton {
-  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-large"));
-}
-
-:host([size="xl"]) .swc-InfieldButton {
-  --_swc-infield-button-icon-size: var(--swc-infield-button-icon-size, token("workflow-icon-extra-large"));
-}
-
 /* ── Quiet ────────────────────────────────────────── */
 
 :host([quiet]) .swc-InfieldButton {
   background-color: transparent;
   border-color: transparent;
   border-width: 0;
-}
-
-:host([quiet]) .swc-InfieldButton:hover,
-:host([quiet]) .swc-InfieldButton:active,
-:host([quiet]) .swc-InfieldButton:focus-visible {
-  background-color: transparent;
-  border-color: transparent;
 }
 
 :host([quiet]) .swc-InfieldButton:disabled:is(*, :hover, :active) {

@@ -32,13 +32,13 @@ import styles from './infield-button.css';
  *
  * @slot icon - Icon to display inside the button.
  *
- * @cssprop --swc-infield-button-height - Outer block and inline size of the host element
- *   (always square). Defaults to `component-height-*` per size (S=24px, M=32px, L=40px,
- *   XL=48px at desktop scale). The visible fill area is this value minus the per-size
- *   edge-to-fill padding on each side, yielding S=16px, M=20px, L=24px, XL=32px. The
- *   consuming field overrides this when it needs a non-standard outer size.
+ * @cssprop --swc-infield-button-padding - Padding applied to all four sides of the button.
+ *   Determines the visible button size together with the icon. Defaults to
+ *   `accessory-item-padding-medium` (5px) for size M; overridden per size
+ *   (S=3px, L=7px, XL=9px). Consuming fields can override this to adjust the button's visual footprint.
  * @cssprop --swc-infield-button-icon-size - Size of the slotted icon element.
- *   Defaults to the medium workflow icon size token.
+ *   Defaults to `workflow-icon-3x-small` (10px) for sizes S and M.
+ *   Overridden to `workflow-icon-2x-small` (12px) for L and `workflow-icon-extra-small` (14px) for XL.
  * @cssprop --swc-infield-button-border-radius - Default corner radius applied to all four
  *   corners. Defaults to `token("corner-radius-100")`. Override individual corners with the
  *   `--swc-infield-button-border-{start-start,start-end,end-start,end-end}-radius` properties.
