@@ -67,7 +67,7 @@ export abstract class InfieldButtonBase extends ButtonBase {
   // ───────────────────
 
   /**
-   * Applies the quiet (no-border) visual treatment. Used when the infield button
+   * Applies the quiet (no-background) visual treatment. Used when the infield button
    * is part of a quiet field variant.
    */
   @property({ type: Boolean, reflect: true })

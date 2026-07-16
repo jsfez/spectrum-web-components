@@ -139,36 +139,27 @@ export const Anatomy: Story = {
 // ──────────────────────────
 
 export const Sizes: Story = {
-  render: (args) =>
-    html`${INFIELD_BUTTON_VALID_SIZES.map((size) =>
+  render: (args) => html`
+    ${INFIELD_BUTTON_VALID_SIZES.map((size) =>
       template({
         ...args,
         size,
         'accessible-label': `${sizeLabels[size]} open picker`,
         'icon-slot': chevronIconSvg,
       })
-    )}`,
+    )}
+  `,
   tags: ['options'],
   parameters: { flexLayout: 'row-wrap' },
 };
 
 export const Quiet: Story = {
-  render: (args) => html`
-    ${template({
-      ...args,
-      quiet: false,
-      'accessible-label': 'Open picker (default)',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      quiet: true,
-      'accessible-label': 'Open picker (quiet)',
-      'icon-slot': chevronIconSvg,
-    })}
-  `,
+  args: {
+    quiet: true,
+    'accessible-label': 'Open picker',
+    'icon-slot': chevronIconSvg,
+  },
   tags: ['options'],
-  parameters: { flexLayout: 'row-wrap' },
 };
 
 // ──────────────────────────

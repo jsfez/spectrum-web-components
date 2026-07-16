@@ -40,16 +40,11 @@
 /* ── Fill (button) ────────────────────────────────── */
 
 .swc-InfieldButton {
-  --_swc-infield-button-border-width: token("border-width-100");
   --_swc-infield-button-border-radius: var(--swc-infield-button-border-radius, token("corner-radius-100"));
 
-  /* Total block size: 2× padding + icon + 2× border. Used as the perspective
-     distance for the press transform so the effect scales with component size. */
-  --_swc-infield-button-block-size: calc(
-    var(--swc-infield-button-padding, token("accessory-item-padding-medium")) * 2 +
-    var(--swc-infield-button-icon-size, token("workflow-icon-3x-small")) +
-    var(--_swc-infield-button-border-width) * 2
-  );
+  /* Total block size: 2× padding + icon. Used as the perspective distance for
+     the press transform so the effect scales with component size. */
+  --_swc-infield-button-block-size: calc(var(--swc-infield-button-padding, token("accessory-item-padding-medium")) * 2 + var(--swc-infield-button-icon-size, token("workflow-icon-3x-small")));
 
   display: flex;
   align-items: center;
@@ -58,7 +53,8 @@
   margin: 0;
   color: var(--swc-infield-button-icon-color, token("neutral-content-color-default"));
   background-color: var(--swc-infield-button-background-color, token("gray-100"));
-  border: var(--_swc-infield-button-border-width) solid var(--swc-infield-button-border-color, token("gray-300"));
+  border: none;
+  border-radius: var(--_swc-infield-button-border-radius);
   border-start-start-radius: var(--swc-infield-button-border-start-start-radius, var(--_swc-infield-button-border-radius));
   border-start-end-radius: var(--swc-infield-button-border-start-end-radius, var(--_swc-infield-button-border-radius));
   border-end-start-radius: var(--swc-infield-button-border-end-start-radius, var(--_swc-infield-button-border-radius));
@@ -67,7 +63,7 @@
   cursor: default;
   transition-timing-function: token("animation-ease-in-out");
   transition-duration: token("animation-duration-100");
-  transition-property: background-color, border-color, color, transform;
+  transition-property: background-color, color, transform;
 }
 
 /* ── States ───────────────────────────────────────── */
@@ -75,13 +71,11 @@
 .swc-InfieldButton:hover {
   color: var(--swc-infield-button-icon-color-hover, token("neutral-content-color-hover"));
   background-color: var(--swc-infield-button-background-color-hover, token("gray-200"));
-  border-color: var(--swc-infield-button-border-color-hover, token("gray-300"));
 }
 
 .swc-InfieldButton:active {
   color: var(--swc-infield-button-icon-color-active, token("neutral-content-color-down"));
   background-color: var(--swc-infield-button-background-color-active, token("gray-200"));
-  border-color: var(--swc-infield-button-border-color-active, token("gray-300"));
   transform: var(--swc-infield-button-down-state-transform, perspective(var(--_swc-infield-button-block-size)) translate3d(0, 0, token("component-size-difference-down")));
   will-change: transform;
 }
@@ -90,7 +84,6 @@
 .swc-InfieldButton:focus-visible {
   color: var(--swc-infield-button-icon-color-focus, token("neutral-content-color-key-focus"));
   background-color: var(--swc-infield-button-background-color-focus, token("gray-200"));
-  border-color: var(--swc-infield-button-border-color-focus, token("gray-300"));
   outline: none;
 }
 
@@ -98,7 +91,6 @@
 .swc-InfieldButton:disabled:is(*, :hover, :active) {
   color: var(--swc-infield-button-icon-color-disabled, token("disabled-content-color"));
   background-color: var(--swc-infield-button-background-color-disabled, token("disabled-background-color"));
-  border-color: var(--swc-infield-button-border-color-disabled, token("gray-300"));
   cursor: default;
   transform: none;
 }
@@ -119,13 +111,10 @@ slot[name="icon"]::slotted(*) {
 
 :host([quiet]) .swc-InfieldButton {
   background-color: transparent;
-  border-color: transparent;
-  border-width: 0;
 }
 
 :host([quiet]) .swc-InfieldButton:disabled:is(*, :hover, :active) {
   background-color: transparent;
-  border-color: transparent;
 }
 
 /* ── Forced colors ────────────────────────────────── */
