@@ -94,12 +94,24 @@ export const Playground: Story = {
 //    OVERVIEW STORY
 // ──────────────────────────
 
+// Overview: picker context — the most common infield button affordance
 export const Overview: Story = {
-  args: {
-    'accessible-label': 'Open picker',
-    'icon-slot': chevronIconSvg,
-    size: 'm',
-  },
+  render: (args) => html`
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="overview-picker" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Color</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+        <input
+          id="overview-picker"
+          type="text"
+          readonly
+          value="Ultramarine"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, 'accessible-label': 'Open color picker', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
+  `,
+  args: { size: 'm' },
   tags: ['overview'],
 };
 
@@ -107,31 +119,55 @@ export const Overview: Story = {
 //    ANATOMY STORIES
 // ──────────────────────────
 
+// Anatomy: the three canonical affordances, each shown in field context
 export const Anatomy: Story = {
   render: (args) => html`
-    ${template({
-      ...args,
-      'accessible-label': 'Open picker',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      'accessible-label': 'Clear',
-      'icon-slot': crossIconSvg,
-    })}
-    ${template({
-      ...args,
-      'accessible-label': 'Increment',
-      'icon-slot': addIconSvg,
-    })}
-    ${template({
-      ...args,
-      'accessible-label': 'Decrement',
-      'icon-slot': removeIconSvg,
-    })}
+    <div style="display: flex; flex-direction: column; gap: 16px; align-items: flex-start;">
+      <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+        <label for="anatomy-picker" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Category</label>
+        <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+          <input
+            id="anatomy-picker"
+            type="text"
+            readonly
+            value="Option A"
+            style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+          />
+          ${template({ ...args, 'accessible-label': 'Open category picker', 'icon-slot': chevronIconSvg })}
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+        <label for="anatomy-search" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Search</label>
+        <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+          <input
+            id="anatomy-search"
+            type="search"
+            value="Query text"
+            style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+          />
+          ${template({ ...args, 'accessible-label': 'Clear search', 'icon-slot': crossIconSvg })}
+        </div>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+        <label for="anatomy-qty" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Quantity</label>
+        <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+          ${template({ ...args, 'accessible-label': 'Decrease quantity', 'icon-slot': removeIconSvg })}
+          <input
+            id="anatomy-qty"
+            type="number"
+            value="1"
+            min="0"
+            max="100"
+            style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; text-align: center; min-inline-size: 60px;"
+          />
+          ${template({ ...args, 'accessible-label': 'Increase quantity', 'icon-slot': addIconSvg })}
+        </div>
+      </div>
+    </div>
   `,
   tags: ['anatomy'],
-  parameters: { flexLayout: 'row-wrap' },
 };
 
 // ──────────────────────────
@@ -139,33 +175,63 @@ export const Anatomy: Story = {
 // ──────────────────────────
 
 export const Sizes: Story = {
-  render: (args) =>
-    html`${INFIELD_BUTTON_VALID_SIZES.map((size) =>
-      template({
-        ...args,
-        size,
-        'accessible-label': `${sizeLabels[size]} open picker`,
-        'icon-slot': chevronIconSvg,
-      })
-    )}`,
+  render: (args) => html`
+    ${INFIELD_BUTTON_VALID_SIZES.map(
+      (size) => html`
+        <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+          <label for="size-${size}" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">${sizeLabels[size]}</label>
+          <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+            <input
+              id="size-${size}"
+              type="text"
+              readonly
+              value="Option A"
+              style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 100px;"
+            />
+            ${template({
+              ...args,
+              size,
+              'accessible-label': `Open ${sizeLabels[size].toLowerCase()} picker`,
+              'icon-slot': chevronIconSvg,
+            })}
+          </div>
+        </div>
+      `
+    )}
+  `,
   tags: ['options'],
   parameters: { flexLayout: 'row-wrap' },
 };
 
 export const Quiet: Story = {
   render: (args) => html`
-    ${template({
-      ...args,
-      quiet: false,
-      'accessible-label': 'Open picker (default)',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      quiet: true,
-      'accessible-label': 'Open picker (quiet)',
-      'icon-slot': chevronIconSvg,
-    })}
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="quiet-default" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Category (default)</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+        <input
+          id="quiet-default"
+          type="text"
+          readonly
+          value="Option A"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, quiet: false, 'accessible-label': 'Open picker', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="quiet-on" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Category (quiet)</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid transparent; border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: transparent;">
+        <input
+          id="quiet-on"
+          type="text"
+          readonly
+          value="Option A"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, quiet: true, 'accessible-label': 'Open picker (quiet)', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
   `,
   tags: ['options'],
   parameters: { flexLayout: 'row-wrap' },
@@ -177,30 +243,63 @@ export const Quiet: Story = {
 
 export const States: Story = {
   render: (args) => html`
-    ${template({
-      ...args,
-      'accessible-label': 'Open picker',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      disabled: true,
-      'accessible-label': 'Open picker (disabled)',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      quiet: true,
-      'accessible-label': 'Open picker (quiet)',
-      'icon-slot': chevronIconSvg,
-    })}
-    ${template({
-      ...args,
-      quiet: true,
-      disabled: true,
-      'accessible-label': 'Open picker (quiet disabled)',
-      'icon-slot': chevronIconSvg,
-    })}
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="state-default" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Default</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+        <input
+          id="state-default"
+          type="text"
+          readonly
+          value="Option A"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, 'accessible-label': 'Open picker', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="state-disabled" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Disabled</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff); opacity: 0.4;">
+        <input
+          id="state-disabled"
+          type="text"
+          readonly
+          value="Option A"
+          disabled
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, disabled: true, 'accessible-label': 'Open picker (disabled)', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="state-quiet" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Quiet</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid transparent; border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: transparent;">
+        <input
+          id="state-quiet"
+          type="text"
+          readonly
+          value="Option A"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, quiet: true, 'accessible-label': 'Open picker (quiet)', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="state-quiet-disabled" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Quiet disabled</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid transparent; border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: transparent; opacity: 0.4;">
+        <input
+          id="state-quiet-disabled"
+          type="text"
+          readonly
+          value="Option A"
+          disabled
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; min-inline-size: 120px;"
+        />
+        ${template({ ...args, quiet: true, disabled: true, 'accessible-label': 'Open picker (quiet disabled)', 'icon-slot': chevronIconSvg })}
+      </div>
+    </div>
   `,
   tags: ['states'],
   parameters: { flexLayout: 'row-wrap' },
@@ -210,12 +309,25 @@ export const States: Story = {
 //    ACCESSIBILITY STORIES
 // ────────────────────────────────
 
-// TODO Phase 7: author MDX accessibility section and move prose there
+// Accessibility: stepper — demonstrates full field context with labels and ARIA
 export const Accessibility: Story = {
-  args: {
-    'accessible-label': 'Open picker',
-    'icon-slot': chevronIconSvg,
-    size: 'm',
-  },
+  render: (args) => html`
+    <div style="display: flex; flex-direction: column; gap: 4px; align-items: flex-start;">
+      <label for="a11y-qty" style="font-family: inherit; font-size: var(--swc-font-size-100, 14px);">Quantity</label>
+      <div style="display: inline-flex; align-items: stretch; border: 1px solid var(--swc-gray-300, #bbb); border-radius: var(--swc-corner-radius-100, 4px); overflow: hidden; background-color: var(--swc-gray-100, #fff);">
+        ${template({ ...args, 'accessible-label': 'Decrease quantity', 'icon-slot': removeIconSvg })}
+        <input
+          id="a11y-qty"
+          type="number"
+          value="1"
+          min="0"
+          max="100"
+          style="border: none; outline: none; background: transparent; padding-inline: 8px; font-size: var(--swc-font-size-100, 14px); font-family: inherit; text-align: center; min-inline-size: 60px;"
+        />
+        ${template({ ...args, 'accessible-label': 'Increase quantity', 'icon-slot': addIconSvg })}
+      </div>
+    </div>
+  `,
+  args: { size: 'm' },
   tags: ['a11y'],
 };
